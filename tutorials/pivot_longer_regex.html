@@ -8,6 +8,8 @@
 
 <meta name="author" content="Manoj Kumar">
 <meta name="dcterms.date" content="2026-03-05">
+<meta name="keywords" content="R programming, data science tutorials, tidyverse, machine learning, data visualization">
+<meta name="description" content="Practical tutorials on R data science including data wrangling, visualization, machine learning, and reproducible research.">
 
 <title>Reshaping Scientific Data in R Using pivot_longer() with Regex – R Data Science Tutorials</title>
 <style>
@@ -90,7 +92,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "/",
     "s"
   ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -108,6 +109,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Reshaping Scientific Data in R Using pivot_longer() with Regex – R Data Science Tutorials">
+<meta property="og:description" content="Practical tutorials on R data science including data wrangling, visualization, machine learning, and reproducible research.">
+<meta property="og:image" content="https://imanojkumar.github.io/r-data-science-tutorials/images/pivot-longer-regex/preview.png">
+<meta property="og:site_name" content="R Data Science Tutorials">
+<meta name="twitter:title" content="Reshaping Scientific Data in R Using pivot_longer() with Regex – R Data Science Tutorials">
+<meta name="twitter:description" content="Practical tutorials on R data science including data wrangling, visualization, machine learning, and reproducible research.">
+<meta name="twitter:image" content="https://imanojkumar.github.io/r-data-science-tutorials/images/pivot-longer-regex/preview.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -174,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#alternative-approach-base-r" id="toc-alternative-approach-base-r" class="nav-link" data-scroll-target="#alternative-approach-base-r">Alternative Approach (Base R)</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/imanojkumar/r-data-science-tutorials/edit/main/tutorials/pivot_longer_regex.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -189,6 +198,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   </div>
 
+<div>
+  <div class="description">
+    Practical tutorials on R data science including data wrangling, visualization, machine learning, and reproducible research.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -211,6 +225,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>R programming, data science tutorials, tidyverse, machine learning, data visualization</p>
+  </div>
+</div>
 
 </header>
 
@@ -542,7 +562,7 @@ median → statistic</code></pre>
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/imanojkumar\.github\.io\/r-data-science-tutorials\/");
+        var filterRegex = new RegExp("https:\/\/imanojkumar\.github\.io\/r-data-science-tutorials");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -870,6 +890,19 @@ median → statistic</code></pre>
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Manoj Kumar</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/imanojkumar/r-data-science-tutorials/edit/main/tutorials/pivot_longer_regex.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Built with Quarto</p>
+</div>
+  </div>
+</footer>
 
 
 
