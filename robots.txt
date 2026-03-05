@@ -1,1 +1,1 @@
-Sitemap: https://imanojkumar.quarto.pub/r-data-science-tutorials/sitemap.xml
+Sitemap: https://imanojkumar.github.io/r-data-science-tutorials/sitemap.xml
