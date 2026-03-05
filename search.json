@@ -1,0 +1,79 @@
+[
+  {
+    "objectID": "tutorials/pivot_longer_regex.html",
+    "href": "tutorials/pivot_longer_regex.html",
+    "title": "Reshaping Scientific Data in R Using pivot_longer() with Regex",
+    "section": "",
+    "text": "Introduction\nMany real-world datasets store multiple variables inside column names. This structure is known as wide format, and it can make analysis difficult.\nIn this tutorial we will learn how to transform such datasets into tidy format using the pivot_longer() function from the tidyr package.\n\n\n\nCase Study\nA pharmaceutical laboratory is testing different drugs against bacterial pathogens.\nFor each drug–pathogen combination, scientists measure:\n\nMedian molar concentration\nMAD (Median Absolute Deviation)\n\nHowever, the dataset stores these measurements inside column names.\n\n\n\nStep 1 — Install Required Packages\ninstall.packages(\"tidyverse\")\nThe tidyverse collection includes:\n\ndplyr\ntidyr\nggplot2\ntibble\n\n\n\n\nStep 2 — Load the Libraries\nlibrary(tidyverse)\nlibrary(tibble)\n\n\n\nStep 3 — Generate an Example Dataset\nInstead of using an external CSV file, we generate the dataset directly in R.\ndata_example &lt;- tribble(\n~drug_name, ~ecoli_median_molar, ~saureus_median_molar, ~ecoli_mad_molar, ~saureus_mad_molar,\n\"drug1\", 1, 2, 0.5, 0.25,\n\"drug2\", 4, 8, 2, 1\n)\n\ndata_example\nThe dataset looks like this:\n\n\n\n\n\n\n\n\n\n\ndrug_name\necoli_median_molar\nsaureus_median_molar\necoli_mad_molar\nsaureus_mad_molar\n\n\n\n\ndrug1\n1\n2\n0.5\n0.25\n\n\ndrug2\n4\n8\n2\n1\n\n\n\nThis is a wide dataset.\n\n\n\nStep 4 — The Problem\nThe column names encode two variables:\n&lt;pathogen&gt;_&lt;statistic&gt;_molar\nExample:\necoli_median_molar\nContains:\necoli  → pathogen\nmedian → statistic\nFor analysis we want a tidy dataset like:\n\n\n\ndrug_name\npathogen\nmedian\nmad\n\n\n\n\ndrug1\necoli\n1\n0.5\n\n\ndrug2\nsaureus\n2\n0.25\n\n\n\n\n\n\nStep 5 — Transform the Data Using pivot_longer()\ndata_long &lt;- data_example |&gt;\n  pivot_longer(\n    cols = -drug_name,\n    names_to = c(\"pathogen\", \".value\"),\n    names_pattern = \"^([^_]+)_(median|mad)_molar\"\n  )\n\ndata_long\nOutput:\n\n\n\ndrug_name\npathogen\nmedian\nmad\n\n\n\n\ndrug1\necoli\n1\n0.5\n\n\ndrug1\nsaureus\n2\n0.25\n\n\ndrug2\necoli\n4\n2\n\n\ndrug2\nsaureus\n8\n1\n\n\n\nNow the dataset is tidy.\n\n\n\nUnderstanding the Regex Pattern\nThe regex used is:\n^([^_]+)_(median|mad)_molar\nExplanation:\n\n\n\nPart\nMeaning\n\n\n\n\n^\nstart of column name\n\n\n([^_]+)\ncapture pathogen name\n\n\n_\nunderscore separator\n\n\n(median\\|mad)\ncapture statistic\n\n\n_molar\nliteral text\n\n\n\nThe captured groups are assigned using:\nnames_to = c(\"pathogen\", \".value\")\n.value tells pivot_longer() to create columns from the captured statistic names.\n\n\n\nStep 6 — Visualizing the Results\nWe can visualize the median drug response using ggplot2.\nggplot(data_long, aes(x = pathogen, y = median, fill = drug_name)) +\n  geom_col(position = \"dodge\") +\n  labs(\n    title = \"Median Drug Effect by Pathogen\",\n    x = \"Pathogen\",\n    y = \"Median Molar Concentration\"\n  )\nThis bar chart compares how different drugs perform against each pathogen.\n\n\n\nAlternative Approach (Base R)\nAnother way to reshape data is using the reshape() function.\nHowever, this approach is less intuitive compared with pivot_longer().\nreshape(\n  data_example,\n  varying = list(\n    median = c(\"ecoli_median_molar\",\"saureus_median_molar\"),\n    mad = c(\"ecoli_mad_molar\",\"saureus_mad_molar\")\n  ),\n  direction = \"long\"\n)\nThe tidyverse solution is generally cleaner and easier to maintain.\n\n\n\nConclusion\nIn this tutorial we learned:\n\nhow wide datasets encode variables in column names\nhow to reshape data using pivot_longer()\nhow regex capture groups help extract structured information\nhow tidy datasets simplify visualization and analysis\n\nThis approach is extremely useful when working with scientific, clinical, or experimental datasets.\n\nAuthor: Manoj Kumar    Platform: Quarto + R + Tidyverse"
+  },
+  {
+    "objectID": "index.html#what-you-will-learn",
+    "href": "index.html#what-you-will-learn",
+    "title": "R Data Science Tutorials",
+    "section": "What You Will Learn",
+    "text": "What You Will Learn\nThis tutorial portal covers:\n\n📊 Data Wrangling\nLearn how to clean, reshape, and transform datasets using the tidyverse ecosystem.\n\n\n📈 Data Visualization\nCreate professional visualizations using ggplot2.\n\n\n🤖 Machine Learning\nBuild predictive models using R packages like:\n\ncaret\ntidymodels\nrandomForest\nxgboost\n\n\n\n🔬 Applied Case Studies\nEach tutorial includes a real-world case study to demonstrate practical applications."
+  },
+  {
+    "objectID": "index.html#latest-blog-tutorials",
+    "href": "index.html#latest-blog-tutorials",
+    "title": "R Data Science Tutorials",
+    "section": "Latest Blog Tutorials",
+    "text": "Latest Blog Tutorials\nExplore the latest articles:\n➡ View All Blogs"
+  },
+  {
+    "objectID": "index.html#why-this-site-exists",
+    "href": "index.html#why-this-site-exists",
+    "title": "R Data Science Tutorials",
+    "section": "Why This Site Exists",
+    "text": "Why This Site Exists\nMany learners struggle with understanding how theoretical data science concepts apply in real problems.\nThis website focuses on:\n\nreproducible examples\npractical workflows\nreal datasets\nstep-by-step explanations"
+  },
+  {
+    "objectID": "index.html#author",
+    "href": "index.html#author",
+    "title": "R Data Science Tutorials",
+    "section": "Author",
+    "text": "Author\nManoj Kumar\nData scientist, researcher, and educator working at the intersection of:\n\ndata science\nartificial intelligence\nindustrial analytics\nsustainability analytics"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About This Website",
+    "section": "",
+    "text": "R Data Science Tutorials is an educational platform focused on teaching practical data science using the R programming language.\nThe goal is to help learners understand how to apply data science techniques to real problems."
+  },
+  {
+    "objectID": "about.html#what-this-site-covers",
+    "href": "about.html#what-this-site-covers",
+    "title": "About This Website",
+    "section": "What This Site Covers",
+    "text": "What This Site Covers\nTopics include:\n\ndata wrangling using tidyverse\nstatistical analysis\nmachine learning workflows\ndata visualization\nreproducible research\n\nAll tutorials are written with a hands-on learning approach."
+  },
+  {
+    "objectID": "about.html#who-this-site-is-for",
+    "href": "about.html#who-this-site-is-for",
+    "title": "About This Website",
+    "section": "Who This Site Is For",
+    "text": "Who This Site Is For\nThis site is designed for:\n\nbeginners learning R\ndata analysts improving their workflow\nresearchers working with data\nstudents studying data science"
+  },
+  {
+    "objectID": "about.html#author",
+    "href": "about.html#author",
+    "title": "About This Website",
+    "section": "Author",
+    "text": "Author\nManoj Kumar\nProfessional background includes:\n\nindustrial analytics\nmachine learning\nESG and sustainability analytics\nacademic research"
+  },
+  {
+    "objectID": "about.html#technology-behind-this-site",
+    "href": "about.html#technology-behind-this-site",
+    "title": "About This Website",
+    "section": "Technology Behind This Site",
+    "text": "Technology Behind This Site\nThis website is built using:\n\nQuarto\nR\ntidyverse\nQuarto Pub hosting"
+  },
+  {
+    "objectID": "tutorials/index.html",
+    "href": "tutorials/index.html",
+    "title": "R Data Science Blogs",
+    "section": "",
+    "text": "Welcome to the R Data Science Tutorial Library. Browse tutorials by topic or category.\nAll articles include fully reproducible R code and explanations. Use the posts below to explore tutorials.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReshaping Scientific Data in R Using pivot_longer() with Regex\n\n\n\n\n\n\n\n\nMar 5, 2026\n\n\nManoj Kumar\n\n\n\n\n\nNo matching items"
+  }
+]
