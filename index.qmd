@@ -5,7 +5,7 @@ format: html
 
 ---
 
-# Welcome
+# Learn Practical Data Science in R
 
 Welcome to **R Data Science Tutorials**, a learning platform focused on practical applications of **R programming, data science, and machine learning**.
 

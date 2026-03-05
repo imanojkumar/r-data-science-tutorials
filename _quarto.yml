@@ -13,9 +13,21 @@ website:
         menu:
           - href: tutorials/index.qmd
             text: All Blogs
-          - href: tutorials/pivot_longer_regex.qmd
-            text: Pivot Longer with Regex
 
+    search: true
+
+    page-footer:
+      left: "© Manoj Kumar"
+      right: "Built with Quarto"
+
+    metadata:
+      description: "Practical tutorials on R data science including data wrangling, visualization, machine learning, and reproducible research."
+      keywords:
+        - R programming
+        - data science tutorials
+        - tidyverse
+        - machine learning
+        - data visualization
 
 format:
   html:
@@ -24,6 +36,5 @@ format:
       - brand
     css: styles.css
     toc: true
-
 
 

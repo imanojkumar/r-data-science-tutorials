@@ -10,6 +10,7 @@ categories:
   - R
   - Data Wrangling
   - Tidy Data
+image: ../images/pivot-longer-regex/preview.png
 ---
 
 # Introduction
@@ -106,7 +107,9 @@ median → statistic
 For analysis we want a tidy dataset like:
 
 | drug_name | pathogen | median | mad |
-|-----------|----------|--------|-----|
+|---------------|---------------|---------------|---------------|
+| drug1 | ecoli | 1 | 0.5 |
+| drug2 | saureus | 2 | 0.25 |
 
 ------------------------------------------------------------------------
 
