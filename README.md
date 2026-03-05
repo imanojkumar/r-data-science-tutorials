@@ -13,18 +13,6 @@ The site provides practical tutorials covering:
 
 The blog is published using **Quarto Pub**.
 
-## Project Structure
-
-rtutorials
-│
-├── index.qmd
-├── about.qmd
-├── _quarto.yml
-│
-└── tutorials
-├── index.qmd
-└── pivot_longer_regex.qmd
-
 
 ## Author
 

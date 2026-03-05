@@ -36,5 +36,7 @@ format:
       - brand
     css: styles.css
     toc: true
+    reading-time: true
 
-
+execute:
+  freeze: auto

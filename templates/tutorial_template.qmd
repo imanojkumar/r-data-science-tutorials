@@ -1,5 +1,10 @@
 ---
-title: "tutorial_template"
+title: "Tutorial Title"
+author: Manoj Kumar
+date: today
+categories: [R, Data Science]
+difficulty: Beginner/Intermediate/Advanced
+reading-time: 10
 format: html
 ---
 
