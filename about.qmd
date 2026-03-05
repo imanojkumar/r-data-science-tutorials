@@ -1,0 +1,59 @@
+---
+title: "About This Website"
+format: html
+---
+
+---
+
+**R Data Science Tutorials** is an educational platform focused on teaching practical data science using the **R programming language**.
+
+The goal is to help learners understand how to apply data science techniques to real problems.
+
+---
+
+## What This Site Covers
+
+Topics include:
+
+* data wrangling using tidyverse
+* statistical analysis
+* machine learning workflows
+* data visualization
+* reproducible research
+
+All tutorials are written with a **hands-on learning approach**.
+
+---
+
+## Who This Site Is For
+
+This site is designed for:
+
+* beginners learning R
+* data analysts improving their workflow
+* researchers working with data
+* students studying data science
+
+---
+
+## Author
+
+**Manoj Kumar**
+
+Professional background includes:
+
+* industrial analytics
+* machine learning
+* ESG and sustainability analytics
+* academic research
+
+---
+
+## Technology Behind This Site
+
+This website is built using:
+
+* Quarto
+* R
+* tidyverse
+* Quarto Pub hosting

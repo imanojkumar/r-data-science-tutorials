@@ -1,0 +1,78 @@
+---
+title: "R Data Science Tutorials"
+format: html
+---
+
+---
+
+# Welcome
+
+Welcome to **R Data Science Tutorials**, a learning platform focused on practical applications of **R programming, data science, and machine learning**.
+
+This site contains step-by-step tutorials designed for:
+
+* students
+* data analysts
+* researchers
+* professionals transitioning into data science
+
+---
+
+## What You Will Learn
+
+This tutorial portal covers:
+
+### 📊 Data Wrangling
+
+Learn how to clean, reshape, and transform datasets using the **tidyverse ecosystem**.
+
+### 📈 Data Visualization
+
+Create professional visualizations using **ggplot2**.
+
+### 🤖 Machine Learning
+
+Build predictive models using R packages like:
+
+* caret
+* tidymodels
+* randomForest
+* xgboost
+
+### 🔬 Applied Case Studies
+
+Each tutorial includes a **real-world case study** to demonstrate practical applications.
+
+---
+
+## Latest Blog Tutorials
+
+Explore the latest articles:
+
+➡ **[View All Blogs](tutorials/index.qmd)**
+
+---
+
+## Why This Site Exists
+
+Many learners struggle with understanding **how theoretical data science concepts apply in real problems**.
+
+This website focuses on:
+
+* reproducible examples
+* practical workflows
+* real datasets
+* step-by-step explanations
+
+---
+
+## Author
+
+**Manoj Kumar**
+
+Data scientist, researcher, and educator working at the intersection of:
+
+* data science
+* artificial intelligence
+* industrial analytics
+* sustainability analytics

@@ -1,0 +1,219 @@
+---
+title: "Reshaping Scientific Data in R Using pivot_longer() with Regex"
+author: "Manoj Kumar"
+date: today
+format:
+  html:
+    toc: true
+    code-fold: false
+categories:
+  - R
+  - Data Wrangling
+  - Tidy Data
+---
+
+# Introduction
+
+Many real-world datasets store multiple variables inside column names. This structure is known as **wide format**, and it can make analysis difficult.
+
+In this tutorial we will learn how to transform such datasets into **tidy format** using the `pivot_longer()` function from the `tidyr` package.
+
+------------------------------------------------------------------------
+
+# Case Study
+
+A pharmaceutical laboratory is testing different drugs against bacterial pathogens.
+
+For each drug–pathogen combination, scientists measure:
+
+-   Median molar concentration
+-   MAD (Median Absolute Deviation)
+
+However, the dataset stores these measurements inside column names.
+
+------------------------------------------------------------------------
+
+# Step 1 — Install Required Packages
+
+``` r
+install.packages("tidyverse")
+```
+
+The **tidyverse** collection includes:
+
+-   `dplyr`
+-   `tidyr`
+-   `ggplot2`
+-   `tibble`
+
+------------------------------------------------------------------------
+
+# Step 2 — Load the Libraries
+
+``` r
+library(tidyverse)
+library(tibble)
+```
+
+------------------------------------------------------------------------
+
+# Step 3 — Generate an Example Dataset
+
+Instead of using an external CSV file, we generate the dataset directly in R.
+
+``` r
+data_example <- tribble(
+~drug_name, ~ecoli_median_molar, ~saureus_median_molar, ~ecoli_mad_molar, ~saureus_mad_molar,
+"drug1", 1, 2, 0.5, 0.25,
+"drug2", 4, 8, 2, 1
+)
+
+data_example
+```
+
+The dataset looks like this:
+
+| drug_name | ecoli_median_molar | saureus_median_molar | ecoli_mad_molar | saureus_mad_molar |
+|---------------|---------------|---------------|---------------|---------------|
+| drug1 | 1 | 2 | 0.5 | 0.25 |
+| drug2 | 4 | 8 | 2 | 1 |
+
+This is a **wide dataset**.
+
+------------------------------------------------------------------------
+
+# Step 4 — The Problem
+
+The column names encode two variables:
+
+```         
+<pathogen>_<statistic>_molar
+```
+
+Example:
+
+```         
+ecoli_median_molar
+```
+
+Contains:
+
+```         
+ecoli  → pathogen
+median → statistic
+```
+
+For analysis we want a tidy dataset like:
+
+| drug_name | pathogen | median | mad |
+|-----------|----------|--------|-----|
+
+------------------------------------------------------------------------
+
+# Step 5 — Transform the Data Using `pivot_longer()`
+
+``` r
+data_long <- data_example |>
+  pivot_longer(
+    cols = -drug_name,
+    names_to = c("pathogen", ".value"),
+    names_pattern = "^([^_]+)_(median|mad)_molar"
+  )
+
+data_long
+```
+
+Output:
+
+| drug_name | pathogen | median | mad  |
+|-----------|----------|--------|------|
+| drug1     | ecoli    | 1      | 0.5  |
+| drug1     | saureus  | 2      | 0.25 |
+| drug2     | ecoli    | 4      | 2    |
+| drug2     | saureus  | 8      | 1    |
+
+Now the dataset is **tidy**.
+
+------------------------------------------------------------------------
+
+# Understanding the Regex Pattern
+
+The regex used is:
+
+```         
+^([^_]+)_(median|mad)_molar
+```
+
+Explanation:
+
+| Part            | Meaning               |
+|-----------------|-----------------------|
+| `^`             | start of column name  |
+| `([^_]+)`       | capture pathogen name |
+| `_`             | underscore separator  |
+| `(median\|mad)` | capture statistic     |
+| `_molar`        | literal text          |
+
+The captured groups are assigned using:
+
+```         
+names_to = c("pathogen", ".value")
+```
+
+`.value` tells `pivot_longer()` to create columns from the captured statistic names.
+
+------------------------------------------------------------------------
+
+# Step 6 — Visualizing the Results
+
+We can visualize the median drug response using `ggplot2`.
+
+```r
+ggplot(data_long, aes(x = pathogen, y = median, fill = drug_name)) +
+  geom_col(position = "dodge") +
+  labs(
+    title = "Median Drug Effect by Pathogen",
+    x = "Pathogen",
+    y = "Median Molar Concentration"
+  )
+```
+
+This bar chart compares how different drugs perform against each pathogen.
+
+------------------------------------------------------------------------
+
+# Alternative Approach (Base R)
+
+Another way to reshape data is using the `reshape()` function.
+
+However, this approach is less intuitive compared with `pivot_longer()`.
+
+``` r
+reshape(
+  data_example,
+  varying = list(
+    median = c("ecoli_median_molar","saureus_median_molar"),
+    mad = c("ecoli_mad_molar","saureus_mad_molar")
+  ),
+  direction = "long"
+)
+```
+
+The `tidyverse` solution is generally cleaner and easier to maintain.
+
+------------------------------------------------------------------------
+
+# Conclusion
+
+In this tutorial we learned:
+
+-   how wide datasets encode variables in column names
+-   how to reshape data using `pivot_longer()`
+-   how regex capture groups help extract structured information
+-   how tidy datasets simplify visualization and analysis
+
+This approach is extremely useful when working with scientific, clinical, or experimental datasets.
+
+------------------------------------------------------------------------
+
+**Author:** Manoj Kumar   &nbsp;&nbsp;   **Platform:** Quarto + R + Tidyverse

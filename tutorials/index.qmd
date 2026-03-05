@@ -1,0 +1,23 @@
+---
+title: "R Data Science Blogs"
+listing: true
+contents: .
+sort: "date desc"
+type: default
+categories: true
+fields: [title, date, categories]
+---
+
+Welcome to the **R Data Science Tutorial Blog**.
+
+Here you will find practical tutorials on:
+
+* Data wrangling
+* Machine learning
+* Data visualization
+* Statistical computing
+* Reproducible research
+
+All articles include **fully reproducible R code and explanations**.
+
+Use the posts below to explore tutorials.

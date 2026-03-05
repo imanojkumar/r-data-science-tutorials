@@ -1,0 +1,13 @@
+# Quarto build output
+_site/
+.quarto/
+
+# RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# OS files
+.DS_Store
+Thumbs.db

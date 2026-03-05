@@ -1,0 +1,29 @@
+project:
+  type: website
+
+website:
+  title: "R Data Science Tutorials"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - text: Blogs
+        menu:
+          - href: tutorials/index.qmd
+            text: All Blogs
+          - href: tutorials/pivot_longer_regex.qmd
+            text: Pivot Longer with Regex
+
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+
+
