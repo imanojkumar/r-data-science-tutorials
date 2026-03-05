@@ -3,6 +3,11 @@ project:
 
 website:
   title: "R Data Science Tutorials"
+
+  site-url: https://imanojkumar.github.io/r-data-science-tutorials
+  repo-url: https://github.com/imanojkumar/r-data-science-tutorials
+  repo-actions: [edit]
+
   navbar:
     left:
       - href: index.qmd
@@ -14,20 +19,12 @@ website:
           - href: tutorials/index.qmd
             text: All Blogs
 
-    search: true
+  search:
+    location: navbar
 
-    page-footer:
-      left: "© Manoj Kumar"
-      right: "Built with Quarto"
-
-    metadata:
-      description: "Practical tutorials on R data science including data wrangling, visualization, machine learning, and reproducible research."
-      keywords:
-        - R programming
-        - data science tutorials
-        - tidyverse
-        - machine learning
-        - data visualization
+  page-footer:
+    left: "© Manoj Kumar"
+    right: "Built with Quarto"
 
 format:
   html:
@@ -37,6 +34,23 @@ format:
     css: styles.css
     toc: true
     reading-time: true
+    toc-location: right
+
+    code-copy: true
+    code-overflow: wrap
+
+    page-layout: article
+
+    metadata:
+      description: "Practical tutorials on R data science including data wrangling, visualization, machine learning, and reproducible research."
+      keywords:
+        - R programming
+        - data science tutorials
+        - tidyverse
+        - machine learning
+        - data visualization
+    open-graph: true
+    twitter-card: true
 
 execute:
   freeze: auto

@@ -1,0 +1,7 @@
+- source: project
+  quarto-pub:
+    - id:
+      url: https://imanojkumar.quarto.pub/r-data-science-tutorials
+  netlify:
+    - id: cda9a846-f99b-4b99-ace5-e8becfa02bc6
+      url: https://heartfelt-scone-7c7647.netlify.app
